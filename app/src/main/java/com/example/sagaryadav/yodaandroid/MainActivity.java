@@ -1,5 +1,8 @@
 package com.example.sagaryadav.yodaandroid;
 
+import android.app.IntentService;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
     Button btnClickHere;
     Button btnStart;
     TextView tvMessage;
+
+    YodaBroadcastReceivers broadcastReceiver = new YodaBroadcastReceivers();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +35,18 @@ public class MainActivity extends AppCompatActivity {
         });
 
         btnStart.setOnClickListener((v) -> {
-
+            startYodaService();
         });
+
+        //register broadcast receiver
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(YodaBroadcastReceivers.YODA_ACTION);
+        registerReceiver(broadcastReceiver,intentFilter);
+    }
+
+    private void startYodaService() {
+        Intent serviceIntent = new Intent(this,YodaService.class);
+        startService(serviceIntent);
     }
 
     @Override
@@ -63,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         Log.d(TAG, "onDestroy: ");
         super.onDestroy();
+        unregisterReceiver(broadcastReceiver);
     }
 
     public void showAlertMessage(int stringResId) {

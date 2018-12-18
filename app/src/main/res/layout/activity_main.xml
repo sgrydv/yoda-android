@@ -41,21 +41,4 @@
         android:text="Start"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"/>
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:inputType="number"
-        tools:text="1234567890"/>
-    <Button
-        android:id="@+id/btnCall"
-        android:layout_marginTop="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Call "
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"/>
-
 </LinearLayout>
