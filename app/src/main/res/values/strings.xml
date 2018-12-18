@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Yoda Android</string>
+    <string name="yoda_message">I Am Yoda</string>
+</resources>
